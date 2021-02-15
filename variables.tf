@@ -14,6 +14,15 @@ variable "region" {
 #}
 
 ##################################################################################
+# resource_group - The IBM Cloud resource group to create the F5 BIG-IP instance
+##################################################################################
+variable "resource_group" {
+  type        = string
+  default     = "default"
+  description = "The IBM Cloud resource group to create the F5 BIG-IQ instance"
+}
+
+##################################################################################
 # instance_name - The name of the F5 BIG-IQ instance
 ##################################################################################
 variable "instance_name" {
