@@ -105,10 +105,10 @@ resource "ibm_is_instance" "f5_ve_instance" {
 }
 
 # create floating IP for management access
-resource "ibm_is_floating_ip" "f5_management_floating_ip" {
-  name   = "f0-${random_uuid.namer.result}"
-  target = ibm_is_instance.f5_ve_instance.primary_network_interface.0.id
-}
+# resource "ibm_is_floating_ip" "f5_management_floating_ip" {
+#  name   = "f0-${random_uuid.namer.result}"
+#  target = ibm_is_instance.f5_ve_instance.primary_network_interface.0.id
+# }
 
 # create 1:1 floating IPs to vNICs - Not supported by IBM yet
 #resource "ibm_is_floating_ip" "f5_data_floating_ips" {
@@ -141,9 +141,10 @@ output "profile_id" {
   value = data.ibm_is_instance_profile.instance_profile.id
 }
 
-output "f5_shell_access" {
-  value = "ssh://root@${ibm_is_floating_ip.f5_management_floating_ip.address}"
-}
+#
+# output "f5_shell_access" {
+#  value = "ssh://root@${ibm_is_floating_ip.f5_management_floating_ip.address}"
+# }
 
 output "f5_phone_home_url" {
   value = var.phone_home_url
