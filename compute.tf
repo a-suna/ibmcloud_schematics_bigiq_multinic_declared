@@ -80,6 +80,7 @@ data "template_file" "user_data" {
 # create compute instance
 resource "ibm_is_instance" "f5_ve_instance" {
   name    = var.instance_name
+  resource_group = data.ibm_resource_group.group.id
   image   = data.ibm_is_image.bigiq_custom_image.id
   profile = data.ibm_is_instance_profile.instance_profile.id
   primary_network_interface {
